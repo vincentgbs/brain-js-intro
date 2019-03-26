@@ -19,14 +19,21 @@
               { input: [1, 1], output: [0] }
             ];
 
-            net.train(trainingData);
-
-            document.getElementById("run").addEventListener("click", function() {
-                let result = net.run([0, 0]);
-                console.log(result);
-                document.getElementById("console").innerHTML = result;
+            net.train(trainingData, {
+                log: (error) => console.log(error),
+                logPeriod: 100
             });
 
+            console.log(net.run([0, 0]));
+            console.log(net.run([0, 1]));
+            console.log(net.run([1, 0]));
+            console.log(net.run([1, 1]));
+
+            // document.getElementById("run").addEventListener("click", function() {
+            //     let result = net.run([0, 0]);
+            //     console.log(result);
+            //     document.getElementById("console").innerHTML = result;
+            // });
         </script>
     </body>
 </html>
