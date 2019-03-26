@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <!-- brain.js cdn -->
+        <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
+    </head>
+    <body>
+        <!-- https://scrimba.com/g/gneuralnetworks -->
+        <div id="console"></div>
+        <button id="run">Run test</button>
+
+        <!-- XOR example -->
+        <script>
+            const net = new brain.NeuralNetwork({ hiddenLayers: [3] });
+
+            const trainingData = [
+              { input: [0, 0], output: [0] },
+              { input: [0, 1], output: [1] },
+              { input: [1, 0], output: [1] },
+              { input: [1, 1], output: [0] }
+            ];
+
+            net.train(trainingData);
+
+            document.getElementById("run").addEventListener("click", function() {
+                let result = net.run([0, 0]);
+                console.log(result);
+                document.getElementById("console").innerHTML = result;
+            });
+
+        </script>
+    </body>
+</html>
