@@ -2,6 +2,8 @@
     <head>
         <!-- brain.js cdn -->
         <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
+        <!-- <script src="js/intro.js"></script> -->
+        <script src="js/objects.js"></script>
     </head>
     <body>
         <!-- https://scrimba.com/g/gneuralnetworks -->
@@ -11,31 +13,12 @@
 
         <!-- XOR example -->
         <script>
-            const net = new brain.NeuralNetwork({ hiddenLayers: [3] });
-
-            const trainingData = [
-              { input: [0, 0], output: [0] },
-              { input: [0, 1], output: [1] },
-              { input: [1, 0], output: [1] },
-              { input: [1, 1], output: [0] }
-            ];
-
             document.getElementById("train").addEventListener("click", function() {
-                net.train(trainingData, {
-                    log: (error) => console.log(error),
-                    logPeriod: 100
-                });
-                document.getElementById("console").innerHTML = "Training...";
+                globalVar.train();
             });
 
             document.getElementById("run").addEventListener("click", function() {
-                // console.log(net.run([0, 0]));
-                // console.log(net.run([0, 1]));
-                // console.log(net.run([1, 0]));
-                // console.log(net.run([1, 1]));
-                let result = net.run([0, 0]);
-                console.log(result);
-                document.getElementById("console").innerHTML = "Result: " + result;
+                globalVar.run();
             });
         </script>
     </body>
