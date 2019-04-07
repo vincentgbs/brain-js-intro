@@ -6,6 +6,7 @@
     <body>
         <!-- https://scrimba.com/g/gneuralnetworks -->
         <div id="console"></div>
+        <button id="train">Train</button>
         <button id="run">Run test</button>
 
         <!-- XOR example -->
@@ -19,21 +20,23 @@
               { input: [1, 1], output: [0] }
             ];
 
-            net.train(trainingData, {
-                log: (error) => console.log(error),
-                logPeriod: 100
+            document.getElementById("train").addEventListener("click", function() {
+                net.train(trainingData, {
+                    log: (error) => console.log(error),
+                    logPeriod: 100
+                });
+                document.getElementById("console").innerHTML = "Training...";
             });
 
-            console.log(net.run([0, 0]));
-            console.log(net.run([0, 1]));
-            console.log(net.run([1, 0]));
-            console.log(net.run([1, 1]));
-
-            // document.getElementById("run").addEventListener("click", function() {
-            //     let result = net.run([0, 0]);
-            //     console.log(result);
-            //     document.getElementById("console").innerHTML = result;
-            // });
+            document.getElementById("run").addEventListener("click", function() {
+                // console.log(net.run([0, 0]));
+                // console.log(net.run([0, 1]));
+                // console.log(net.run([1, 0]));
+                // console.log(net.run([1, 1]));
+                let result = net.run([0, 0]);
+                console.log(result);
+                document.getElementById("console").innerHTML = "Result: " + result;
+            });
         </script>
     </body>
 </html>
