@@ -17,8 +17,7 @@
         <button id="run">Run test</button>
 
         <script>
-            console.log(rawData[0]);
-            // scale down to the low of the first day (138)
+            // console.log(rawData[0]);
             function scaleDown(step) {
                 return {
                     open: (step.open - step.low) / (step.high - step.low),
@@ -41,13 +40,31 @@
                 };
             }
             // console.log(scaleUp(scaleDown(rawData[0])));
+            const scaledData = rawData.map(scaleDown);
+
+            // we want the neural net to recognize smaller patterns and predict off those
+            const trainingData = [
+                scaledData.slice(0, 5),
+                scaledData.slice(5, 10),
+                scaledData.slice(10, 15),
+                scaledData.slice(15, 20)
+            ];
+            // console.log(trainingData);
+            const net = new brain.recurrent.LSTMTimeStep({
+                inputSize: 4,
+                hiddenLayers: [8, 8],
+                outputSize: 4,
+            });
 
             document.getElementById("train").addEventListener("click", function() {
-                // globalVar.train();
+                net.train(trainingData, {
+                    learningRate: 0.005,
+                    errorThresh: 0.02,
+                    log: (stats) => console.log(stats)});
             });
 
             document.getElementById("run").addEventListener("click", function() {
-                // globalVar.run();
+                console.log(scaleUp(net.run(rawData[0])));
             });
         </script>
     </body>
