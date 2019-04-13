@@ -7,7 +7,8 @@
         <!-- <script src="js/intro.js"></script> -->
         <!-- <script src="js/objects.js"></script> -->
         <!-- <script src="js/eatfree.js"></script> -->
-        <script src="js/count.js"></script>
+        <!-- <script src="js/count.js"></script> -->
+        <script src="js/stocks.js"></script>
     </head>
     <body>
         <!-- https://scrimba.com/g/gneuralnetworks -->
@@ -15,8 +16,28 @@
         <button id="train">Train</button>
         <button id="run">Run test</button>
 
-        <!-- XOR example -->
         <script>
+            // scale down to the low of the first day (138)
+            function scaleDown(step) {
+                return {
+                    open: step.open / 138,
+                    high: step.high / 138,
+                    low: step.low / 138,
+                    close: step.close / 138
+                };
+            }
+            // console.log(scaleDown(rawData[0]));
+
+            // reverse of normalize stepDown
+            function scaleUp(step) {
+                return {
+                    open: step.open * 138,
+                    high: step.high * 138,
+                    low: step.low * 138,
+                    close: step.close * 138
+                };
+            }
+
             document.getElementById("train").addEventListener("click", function() {
                 // globalVar.train();
             });
