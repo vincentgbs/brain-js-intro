@@ -17,13 +17,16 @@
         <button id="run">Run test</button>
 
         <script>
+            console.log(rawData[0]);
             // scale down to the low of the first day (138)
             function scaleDown(step) {
                 return {
-                    open: step.open / 138,
-                    high: step.high / 138,
-                    low: step.low / 138,
-                    close: step.close / 138
+                    open: (step.open - step.low) / (step.high - step.low),
+                    high: (step.high - step.low) / (step.high - step.low),
+                    low: (step.low - step.low) / (step.high - step.low),
+                    close: (step.close - step.low) / (step.high - step.low),
+                    divisor: step.high - step.low, // to "de-normalize"
+                    lowest: step.low // to "de-normalize"
                 };
             }
             // console.log(scaleDown(rawData[0]));
@@ -31,12 +34,13 @@
             // reverse of normalize stepDown
             function scaleUp(step) {
                 return {
-                    open: step.open * 138,
-                    high: step.high * 138,
-                    low: step.low * 138,
-                    close: step.close * 138
+                    open: step.open * step.divisor + step.lowest,
+                    high: step.high * step.divisor + step.lowest,
+                    low: step.low * step.divisor + step.lowest,
+                    close: step.close * step.divisor + step.lowest,
                 };
             }
+            // console.log(scaleUp(scaleDown(rawData[0])));
 
             document.getElementById("train").addEventListener("click", function() {
                 // globalVar.train();
