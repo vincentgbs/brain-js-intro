@@ -10,6 +10,7 @@
         <!-- <script src="js/count.js"></script> -->
         <!-- <script src="js/stocks.js"></script>
         <script src="js/stockForecast.js"></script> -->
+        <script src="js/math.js"></script>
     </head>
     <body>
         <!-- https://scrimba.com/g/gneuralnetworks -->
@@ -20,11 +21,11 @@
         <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById("train").addEventListener("click", function() {
-                //
+                globalVar.train();
             });
 
             document.getElementById("run").addEventListener("click", function() {
-                //
+                globalVar.run();
             });
         });
         </script>
