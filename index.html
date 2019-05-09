@@ -11,8 +11,10 @@
         <!-- <script src="js/stocks.js"></script>
         <script src="js/stockForecast.js"></script> -->
         <!-- <script src="js/math.js"></script> -->
-        <script src="js/numberImages.js"></script>
-        <script src="js/numberDetector.js"></script>
+        <!-- <script src="js/numberImages.js"></script>
+        <script src="js/numberDetector.js"></script> -->
+        <script src="js/book.js"></script>
+
     </head>
     <body>
         <!-- https://scrimba.com/g/gneuralnetworks -->
@@ -21,6 +23,10 @@
         <button id="run">Run test</button>
 
         <script>
+        function logToWindowConsole(text) {
+            document.getElementById("console").innerHTML = text;
+        }
+
         document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById("train").addEventListener("click", function() {
                 globalVar.train();
