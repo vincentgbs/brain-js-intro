@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <!-- brain.js cdn -->
+        <!-- <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script> -->
+        <script src="https://unpkg.com/brain.js@1.6.0/browser.js"></script>
+        <script src="businessApplication.js"></script>
+    </head>
+    <body>
+        <div id="console"></div>
+        <input type="text" id="user_input" value="I am unhappy!">
+        <button id="train">Train</button>
+        <button id="run">Run test</button>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById("train").addEventListener("click", function() {
+                globalVar.train();
+            });
+
+            document.getElementById("run").addEventListener("click", function() {
+                globalVar.run();
+            });
+        });
+        </script>
+    </body>
+</html>

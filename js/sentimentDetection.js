@@ -11,7 +11,7 @@ globalVar = {
     train: function() {
         net.train(trainingData, {
             // iter: low number is inconsistent, but high number takes a long time
-            iterations: 500,
+            iterations: 200,
             errorThresh: 0.011
         });
     },
