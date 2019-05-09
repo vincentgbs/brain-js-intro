@@ -19,6 +19,15 @@ globalVar = {
         net.train(trainingData, { log: (stats) => console.log(stats) });
     },
     run: function() {
-        // console.log(net.run('example'));
+        const result = brain.likely(toArray(
+            '### ###' +
+            '#  #  #' +
+            '#     #' +
+            '#######' +
+            '#     #' +
+            '#     #' +
+            '#######'
+        ), net);
+        console.log(result);
     }
 };
