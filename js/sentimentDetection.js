@@ -1,0 +1,21 @@
+const trainingData = [
+    { input: 'I am super happy!', output: 'happy' },
+    { input: 'What a pill!', output: 'sarcastic' },
+    { input: 'I am super unhappy!', output: 'sad' },
+    { input: 'Are we there yet?', output: 'excited' }
+];
+
+const net = new brain.recurrent.LSTM();
+
+globalVar = {
+    train: function() {
+        net.train(trainingData, {
+            iterations: 250,
+            errorThresh: 0.011
+        });
+    },
+    run: function() {
+        console.log('I am unhappy! -> ' + net.run('I am unhappy!'));
+        console.log('I am very happy -> ' + net.run('I am happy!'));
+    }
+};
