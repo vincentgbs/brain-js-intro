@@ -6,10 +6,16 @@ const trainingData = [
 ];
 
 const net = new brain.recurrent.LSTM();
-net.train(trainingData, {
-    iterations: 1500,
-    errorThresh: 0.011
-});
 
-console.log('Jane' + net.run('Jane'));
-console.log('It was' + net.run('It was'));
+globalVar = {
+    train: function() {
+        net.train(trainingData, {
+            iterations: 999,
+            errorThresh: 0.011
+        });
+    },
+    run: function() {
+        console.log('Jane' + net.run('Jane'));
+        console.log('It was' + net.run('It was'));
+    }
+};
