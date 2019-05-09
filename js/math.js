@@ -63,11 +63,13 @@ const net = new brain.recurrent.LSTM({ hiddenLayers: [20] });
 
 globalVar = {
     train: function() {
+        // doesn't finish when running for errorThresh below 0.025
         net.train(trainingData, { errorThresh: 0.030, log: (stats) => console.log(stats) });
     },
     run: function() {
         // reading strings as math problems
-        console.log(net.run('4+2='));
-        console.log(net.run('5+6=')); // interesting output
+        console.log(net.run('4+2=')); // 6, as expected
+        // gets it right, sometimes
+        console.log(net.run('5+6=')); // 6+5=11, 11
     }
 };
