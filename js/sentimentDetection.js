@@ -10,7 +10,8 @@ const net = new brain.recurrent.LSTM();
 globalVar = {
     train: function() {
         net.train(trainingData, {
-            iterations: 250,
+            // iter: low number is inconsistent, but high number takes a long time
+            iterations: 500,
             errorThresh: 0.011
         });
     },
@@ -19,3 +20,15 @@ globalVar = {
         console.log('I am very happy -> ' + net.run('I am happy!'));
     }
 };
+
+
+
+/* RNN INPUT-OUTPUT Explanation */
+// const trainingData = [
+//     { input: '1', output: '2' }
+// ];
+// const net = new brain.recurrent.LSTM();
+// const inputMap = ['1', 'NEW IDEA', '2'];
+// [1,0,0]
+// [0,1,0]
+// [0,0,1]
