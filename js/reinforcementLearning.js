@@ -20,7 +20,7 @@ trainingData.push(
     { input: [1, 1], output: [0] }
 );
 
-
+// reinforcement learning
 net.train(trainingData);
 
 console.log('after reinforcement');
