@@ -24,7 +24,7 @@ globalVar = {
                 reject();
             }
         });
-        
+
         promise.then( () => {
             console.log('Training done');
             document.getElementById("run").removeAttribute("disabled");
