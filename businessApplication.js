@@ -13,9 +13,23 @@ function logToWindowConsole(text) {
 
 globalVar = {
     train: function() {
-        net.train(trainingData, {
-            iterations: 500,
-            errorThresh: 0.011
+        let promise = new Promise( (resolve, reject) => {
+            let done = net.train(trainingData, {
+                iterations: 500,
+                errorThresh: 0.011
+            });
+            if (done) {
+                resolve();
+            } else {
+                reject();
+            }
+        });
+        
+        promise.then( () => {
+            console.log('Training done');
+            document.getElementById("run").removeAttribute("disabled");
+        }).catch( () => {
+            console.log('Neural net did not train!');
         });
     },
     run: function() {

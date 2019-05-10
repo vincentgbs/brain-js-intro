@@ -8,14 +8,14 @@
     <body>
         <div id="console"></div>
         <input type="text" id="user_input" value="I am unhappy!">
-        <button id="train">Train</button>
-        <button id="run">Run test</button>
+        <!-- <button id="train">Train</button> -->
+        <button id="run" disabled>Check Statement</button>
 
         <script>
         document.addEventListener("DOMContentLoaded", function(event) {
-            document.getElementById("train").addEventListener("click", function() {
+            // document.getElementById("train").addEventListener("click", function() {
                 globalVar.train();
-            });
+            // });
 
             document.getElementById("run").addEventListener("click", function() {
                 globalVar.run();
