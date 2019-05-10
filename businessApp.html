@@ -10,14 +10,16 @@
     <body>
         <div id="console"></div>
         <input type="text" id="user_input" value="I am unhappy!">
-        <!-- <button id="train">Train</button> -->
         <button id="run" disabled>Check Statement</button>
+        </br>
+        <button id="train" disabled>Train (may take a very long time)</button>
 
         <script>
         document.addEventListener("DOMContentLoaded", function(event) {
-            // document.getElementById("train").addEventListener("click", function() {
-                globalVar.loadLexicons();
-            // });
+            globalVar.loadLexicons();
+            document.getElementById("train").addEventListener("click", function() {
+                globalVar.train();
+            });
 
             document.getElementById("run").addEventListener("click", function() {
                 globalVar.run();

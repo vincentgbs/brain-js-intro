@@ -15,7 +15,7 @@ globalVar = {
     train: function() {
         let promise = new Promise( (resolve, reject) => {
             let done = net.train(trainingData, {
-                iterations: 999,
+                iterations: 100,
                 errorThresh: 0.1
             });
             if (done) {
@@ -53,7 +53,9 @@ globalVar = {
 
         promise.then( () => {
             console.log('Lexicons loaded.');
-            globalVar.train();
+            setTimeout(function() {
+                document.getElementById("train").removeAttribute("disabled");
+            }, 999);
         }).catch( () => {
             console.log('Error loading lexicons.');
         });
